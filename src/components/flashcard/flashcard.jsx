@@ -6,12 +6,14 @@ const Flashcard = (props) =>{
             {props.flashcard.map((flashcard)=>{
             return(
                 <div>
+                    <hr/>
                     <div>
-                        <h1>{flashcard.question}</h1>
+                        <h3>{flashcard.question}</h3>
                     </div>
                     <div>
-                        <h2>{flashcard.answer}</h2>
+                        <h5>{flashcard.answer}</h5>
                     </div>
+                    <hr/>
                 </div>
             )
             })}
