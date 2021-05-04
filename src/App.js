@@ -3,6 +3,7 @@ import Title from './components/flashcard/title/title';
 import Collection from './components/collection/collection';
 import axios from 'axios';
 import './App.css';
+import NewCardForm from './components/newCardForm/cardForm';
 
 class App extends Component{
   state = {
@@ -15,8 +16,11 @@ class App extends Component{
       .then(res => this.setState({ collections : res.data}));
 }
 
-flipcard(){
-  this.setState(this.cardflipped=!this.cardflipped)
+addNewFlashcard = ()=> {
+    axios.post('http://localhost:5000/api/collections/:collection._id/newflashcard')
+    .then(res =>{
+      this.setState(res)
+    })
 }
 
   render(){
@@ -24,6 +28,7 @@ flipcard(){
       <div className="App">
           <Title/>
           <Collection collections={this.state.collections}/>
+          <NewCardForm addNewFlashcard={this.addNewFlashcard}/>
       </div>
     );
   }

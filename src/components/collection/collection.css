@@ -5,9 +5,11 @@
     margin-right: 25px ;
 }
 
-div .collection{
+div.collection{
     border-width: 5px;
     border-color: black;
+    border-style: solid;
+    margin-right: 10px;
 }
 
 .flashcard{

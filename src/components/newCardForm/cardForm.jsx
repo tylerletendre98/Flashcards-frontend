@@ -1,19 +1,39 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-const NewCardForm = () =>{
-    return(
-        <div>
+class NewCardForm extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            question: '',
+            answer: '',
+            collectionTitle:''
+        }
+    }
+
+    handleChange(event){
+        this.setState({value: event.target.value});
+    }
+    render() {
+        return (
             <div>
-                <label>Enter a question:</label>
-                <input type="textbox" name="question" placeholder="Enter a question..." />
+                <form action="Submit" onSubmit={this.addNewFlashcard}>
+                    <div>
+                        <label>Enter Collection Name</label>
+                        <input type="text" value={this.state.collectionTitle} />
+                    </div>
+                    <div>
+                        <label>Enter a question:</label>
+                        <textarea value={this.state.question} cols="30" rows="10"></textarea>
+                    </div>
+                    <div>
+                        <label>Enter a answer:</label>
+                        <input type="textarea" placeholder="Enter a answer..." value={this.state.answer} onChange={this.handleChange}/>
+                    </div>
+                    <input type="submit" value="Submit"/>
+                </form>
             </div>
-            <div>
-                <label>Enter a answer:</label>
-                <input type="text" name="answer" placeholder="Enter a answer..."/>
-            </div>
-            <button>Add Card</button>
-        </div>
-    )
+            );
+    }
 }
 
 export default NewCardForm;
