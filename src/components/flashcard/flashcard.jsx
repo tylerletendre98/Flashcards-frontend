@@ -3,19 +3,22 @@ import React from 'react';
 const Flashcard = (props) =>{
     return(
         <div>
-            {props.flashcard.map((flashcard)=>{
-            return(
-                <div>
-                    <hr/>
-                    <div>
-                        <h3>{flashcard.question}</h3>
+            {props.flashcards.map((flashcard)=>{
+                return(
+                    <div className="flashcard">
+                        <div>
+                           Q: {flashcard.question}
+                        </div>
+                        <div>
+                            A: {flashcard.answer}
+                        </div>
+                        <div>
+                        <button>Delete Card</button>
+                        <button>Update Card</button>
+                        </div>
+                        <hr/>
                     </div>
-                    <div>
-                        <h5>{flashcard.answer}</h5>
-                    </div>
-                    <hr/>
-                </div>
-            )
+                )
             })}
         </div>
     )
