@@ -1,27 +1,43 @@
-import React from 'react';
+import React, {Component} from 'react';
 
-const Flashcard = (props) =>{
-    return(
-        <div>
-            {props.flashcards.map((flashcard)=>{
-                    return(
-                        <div className="flashcard" key={flashcard._id}>
+class Flashcard extends Component{
+    constructor(props){
+        super(props);
+        this.state={
+            flip: false
+        }
+    }
+
+    flipCard(){
+        this.setState({flip: !this.state.flip})
+    }
+
+    render(){
+        return(
+            <div>
+                <div>
+                    <h4>Click card to see the back</h4>                
+                </div>
+                <div>
+                {this.props.flashcards.map((flashcard)=>{
+                        return(
                             <div>
-                               Q: {flashcard.question}
+                                <div className="flashcard" key={flashcard._id} onClick={()=>this.flipCard(this.state.flip)}>
+                                    <div>
+                                    {this.state.flip ? flashcard.answer : flashcard.question}
+                                    </div>
+                                    <button>Delete Card</button>
+                                    <button>Update Card</button>
+                                    <hr/>
+                                </div>
                             </div>
-                            <div>
-                                A: {flashcard.answer}
-                            </div>
-                            <div>
-                            <button>Delete Card</button>
-                            <button>Update Card</button>
-                            </div>
-                            <hr/>
-                        </div>
-                    )
-                })}
-        </div>
-    )
+                        )
+                    })}
+                </div>
+            </div>
+        )
+
+    }
 }
 
 export default Flashcard;
