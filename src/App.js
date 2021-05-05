@@ -27,7 +27,7 @@ addNewFlashcard = ()=> {
     return (
       <div className="App">
           <Title/>
-          <Collection collections={this.state.collections}/>
+          <Collection collections={this.state.collections[0]}/>
           <NewCardForm addNewFlashcard={this.addNewFlashcard}/>
       </div>
     );

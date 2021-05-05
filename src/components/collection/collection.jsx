@@ -6,6 +6,7 @@ const Collection = (props) =>{
     return(
     <div className="container">
         {props.collections.map((collection)=>{
+            console.log(collection[0])
             return(
                 <div key={collection._id}>
                     <div className="collection"> 
@@ -19,7 +20,6 @@ const Collection = (props) =>{
                 </div>
             );
         })}
-
     </div>
 
     )
