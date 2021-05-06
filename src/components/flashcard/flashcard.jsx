@@ -16,9 +16,6 @@ class Flashcard extends Component{
         return(
             <div className="container">
                 <div>
-                    <h4>Click card to see the back</h4>                
-                </div>
-                <div>
                 {this.props.flashcard.map((flashcard)=>{
                         return(
                             <div>
@@ -26,8 +23,6 @@ class Flashcard extends Component{
                                     <div>
                                     {this.state.flip ? flashcard.answer : flashcard.question}
                                     </div>
-                                    <button>Delete Card</button>
-                                    <button>Update Card</button>
                                     <hr/>
                                 </div>
                             </div>

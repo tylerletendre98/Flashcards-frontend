@@ -4,13 +4,14 @@ import Collection from './components/collection/collection';
 import axios from 'axios';
 import './App.css';
 import NewCardForm from './components/newCardForm/cardForm';
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component{
   state = {
     collections: [],
     collectionNumber:0,
     flashcard: 0,
-    dataReady: false
+    dataReady: false,
   }
   
   componentDidMount(){
@@ -21,8 +22,8 @@ class App extends Component{
         }));
 }
 
-addNewFlashcard = ()=> {
-    axios.post('http://localhost:5000/api/collections/:collection._id/newflashcard')
+addNewFlashcard = (collectionId, newFlashcard)=> {
+    axios.post(`http://localhost:5000/api/collections/:${collectionId}/newflashcard`, newFlashcard)
     .then(res =>{
       this.setState(res)
     })
@@ -57,7 +58,7 @@ lastCollection(){
         <div className="App">
             <Title/>
             <Collection collectionNumber={this.state.collectionNumber} collections= {this.state.collections} nextCollection={()=>this.nextCollection()} lastCollection={()=>this.lastCollection()}/>
-            <NewCardForm addNewFlashcard={this.addNewFlashcard}/>
+            <NewCardForm addNewFlashcard={this.addNewFlashcard} collections={this.state.collections} collectionNumber={this.state.collectionNumber}/>
         </div>
       );
     }
