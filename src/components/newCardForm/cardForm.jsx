@@ -17,12 +17,12 @@ class NewCardForm extends Component{
 
     handleSubmit(event){
         event.preventDefault();
-        let collectionId = this.props.collections[this.props.collectionNumber].id
+        let collectionId = this.props.collections[this.props.collectionNumber]._id
         const newFlashcard ={
             question: this.state.question,
             answer: this.state.answer
         }
-        this.props.addNewFlashcard(newFlashcard , collectionId);
+        this.props.addNewFlashcard(collectionId, newFlashcard);
         this.setState({
             question: '',
             answer: ''

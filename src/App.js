@@ -23,9 +23,9 @@ class App extends Component{
 }
 
 addNewFlashcard = (collectionId, newFlashcard)=> {
-    axios.post(`http://localhost:5000/api/collections/:${collectionId}/newflashcard`, newFlashcard)
+    axios.post(`http://localhost:5000/api/collections/${collectionId}`, newFlashcard)
     .then(res =>{
-      this.setState(res)
+      this.setState(res);
     })
 }
 
@@ -44,12 +44,17 @@ lastCollection(){
   let tempCollectionNumber = this.state.collectionNumber;
         tempCollectionNumber--;
         if(tempCollectionNumber < 0){
-            tempCollectionNumber = this.state.collections.length -1
+            tempCollectionNumber = this.state.collections.length - 1
         }
         this.setState({
             collectionNumber: tempCollectionNumber
         });
   }
+
+  // deleteCard= (collectionId, FlashcardId)=>{
+  //     axios.delete(`http://localhost:5000/collections/${collectionId}/flashcards/${FlashcardId}`)
+  //     .then()
+  // }
 
 
   render(){
