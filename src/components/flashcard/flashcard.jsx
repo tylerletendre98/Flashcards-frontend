@@ -14,12 +14,12 @@ class Flashcard extends Component{
 
     render(){
         return(
-            <div>
+            <div className="container">
                 <div>
                     <h4>Click card to see the back</h4>                
                 </div>
                 <div>
-                {this.props.flashcards.map((flashcard)=>{
+                {this.props.flashcard.map((flashcard)=>{
                         return(
                             <div>
                                 <div className="flashcard" key={flashcard._id} onClick={()=>this.flipCard(this.state.flip)}>

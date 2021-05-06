@@ -8,12 +8,17 @@ import NewCardForm from './components/newCardForm/cardForm';
 class App extends Component{
   state = {
     collections: [],
-    cardflipped : false
+    collectionNumber:0,
+    flashcard: 0,
+    dataReady: false
   }
   
   componentDidMount(){
     axios.get('http://localhost:5000/api/collections/collections')
-      .then(res => this.setState({ collections : res.data}));
+      .then(res => this.setState({
+         collections : res.data,
+         dataReady:true
+        }));
 }
 
 addNewFlashcard = ()=> {
@@ -23,14 +28,43 @@ addNewFlashcard = ()=> {
     })
 }
 
+nextCollection(){
+  let tempCollectionNumber = this.state.collectionNumber;
+        tempCollectionNumber++;
+        if(tempCollectionNumber === this.state.collections.length){
+            tempCollectionNumber=0;
+        }
+        this.setState({
+            collectionNumber: tempCollectionNumber
+        });
+}
+
+lastCollection(){
+  let tempCollectionNumber = this.state.collectionNumber;
+        tempCollectionNumber--;
+        if(tempCollectionNumber < 0){
+            tempCollectionNumber = this.state.collections.length -1
+        }
+        this.setState({
+            collectionNumber: tempCollectionNumber
+        });
+  }
+
+
   render(){
-    return (
-      <div className="App">
-          <Title/>
-          <Collection collections={this.state.collections[0]}/>
-          <NewCardForm addNewFlashcard={this.addNewFlashcard}/>
-      </div>
-    );
+    if(this.state.dataReady){
+      return (
+        <div className="App">
+            <Title/>
+            <Collection collectionNumber={this.state.collectionNumber} collections= {this.state.collections} nextCollection={()=>this.nextCollection()} lastCollection={()=>this.lastCollection()}/>
+            <NewCardForm addNewFlashcard={this.addNewFlashcard}/>
+        </div>
+      );
+    }
+    else{
+      return (<div></div>)
+    }
+   
   }
 }
 
