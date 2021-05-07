@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './cardform.css'
 
 class NewCardForm extends Component{
     constructor(props){
@@ -32,7 +33,7 @@ class NewCardForm extends Component{
 
     render() {
         return (
-            <div>
+            <div className="flashcard-form">
                 <div>
                     <h4>Add a new flashcard below to this collection</h4>
                 </div>

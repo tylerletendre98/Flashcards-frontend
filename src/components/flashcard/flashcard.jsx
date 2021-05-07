@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './flashcard.css'
 
 class Flashcard extends Component{
     constructor(props){
@@ -41,9 +42,10 @@ class Flashcard extends Component{
                 <div>
                     <button onClick={()=>this.lastFlashcard()}>Last Flashcard</button>
                 </div>
-                <div onClick={()=>this.flipCard()} className="flashcard">
-                    {this.state.flip ? this.props.flashcard[this.state.flashcardNumber].answer: this.props.flashcard[this.state.flashcardNumber].question}
-                </div>
+                    <div>Flashcard{this.state.flashcardNumber + 1} of {this.props.flashcard.length}</div>
+                    <div onClick={()=>this.flipCard()} className="flashcard">
+                        {this.state.flip ? this.props.flashcard[this.state.flashcardNumber].answer: this.props.flashcard[this.state.flashcardNumber].question}
+                    </div>
                 <div>
                     <button onClick={()=>this.nextFlashcard()}>Next Flashcard</button>
                 </div>
