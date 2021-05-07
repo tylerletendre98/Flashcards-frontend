@@ -1,5 +1,9 @@
 .container{
     display: flex;
     justify-content: center;
+}
 
+.flashcard{
+    height: 100px;
+    width: 100px;
 }

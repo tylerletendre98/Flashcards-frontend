@@ -17,14 +17,16 @@ class App extends Component{
     axios.get('http://localhost:5000/api/collections/collections')
       .then(res => this.setState({
          collections : res.data,
-         dataReady:true
+         dataReady: true
         }));
 }
 
 addNewFlashcard = (collectionId, newFlashcard)=> {
     axios.post(`http://localhost:5000/api/collections/${collectionId}`, newFlashcard)
     .then(res =>{
-      this.setState(res);
+      this.setState({
+        collections: res.data
+      });
     })
 }
 
