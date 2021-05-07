@@ -4,7 +4,8 @@ class Flashcard extends Component{
     constructor(props){
         super(props);
         this.state={
-            flip: false
+            flip: false,
+            flashcardNumber: 0
         }
     }
 
@@ -12,22 +13,39 @@ class Flashcard extends Component{
         this.setState({flip: !this.state.flip})
     }
 
+    nextFlashcard(){
+        let tempFlashcardNumber = this.state.flashcardNumber;
+              tempFlashcardNumber++;
+              if(tempFlashcardNumber === this.props.flashcard.length){
+                  tempFlashcardNumber=0;
+              }
+              this.setState({
+                    flashcardNumber: tempFlashcardNumber
+              });
+      }
+
+      lastFlashcard(){
+        let tempFlashcardNumber = this.state.flashcardNumber;
+              tempFlashcardNumber--;
+              if(tempFlashcardNumber < 0){
+                  tempFlashcardNumber = this.props.flashcard.length - 1
+              }
+              this.setState({
+                  flashcardNumber: tempFlashcardNumber
+              });
+        }
+
     render(){
         return(
             <div className="container">
                 <div>
-                {this.props.flashcard.map((flashcard)=>{
-                        return(
-                            <div>
-                                <div className="flashcard" key={flashcard._id} onClick={()=>this.flipCard(this.state.flip)}>
-                                    <div>
-                                    {this.state.flip ? flashcard.answer : flashcard.question}
-                                    </div>
-                                    <hr/>
-                                </div>
-                            </div>
-                        )
-                    })}
+                    <button onClick={()=>this.lastFlashcard()}>Last Flashcard</button>
+                </div>
+                <div onClick={()=>this.flipCard()} className="flashcard">
+                    {this.state.flip ? this.props.flashcard[this.state.flashcardNumber].answer: this.props.flashcard[this.state.flashcardNumber].question}
+                </div>
+                <div>
+                    <button onClick={()=>this.nextFlashcard()}>Next Flashcard</button>
                 </div>
             </div>
         )

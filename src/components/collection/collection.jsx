@@ -5,6 +5,7 @@ import './collection.css';
 const Collection = (props) =>{
 
     const collectionTotal = props.collections[props.collectionNumber].flashcards.length
+    console.log(props.collections[props.collectionNumber].flashcards)
     return(
         <div>
             <div>

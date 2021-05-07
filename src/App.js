@@ -10,7 +10,6 @@ class App extends Component{
   state = {
     collections: [],
     collectionNumber:0,
-    flashcard: 0,
     dataReady: false,
   }
   
