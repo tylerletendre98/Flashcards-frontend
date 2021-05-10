@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Title from './components/flashcard/title/title';
 import Collection from './components/collection/collection';
 import axios from 'axios';
+import NewCollectionForm from './components/newCollection/newCollection';
 import './App.css';
 import NewCardForm from './components/newCardForm/cardForm';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -28,7 +29,18 @@ addNewFlashcard = (collectionId, newFlashcard)=> {
         collections: res.data
       });
     })
+  }
+
+
+addNewCollection = (newCollection) =>{
+  axios.post(`http://localhost:5000/api/collection` ,newCollection)
+  .then(res=>{
+    this.setState({
+      collections: res.data
+    });
+  })
 }
+
 
 nextCollection(){
   let tempCollectionNumber = this.state.collectionNumber;
@@ -52,10 +64,10 @@ lastCollection(){
         });
   }
 
-  // deleteCard= (collectionId, FlashcardId)=>{
-  //     axios.delete(`http://localhost:5000/collections/${collectionId}/flashcards/${FlashcardId}`)
-  //     .then()
-  // }
+  deleteCard= (collectionId, FlashcardId)=>{
+      axios.delete(`http://localhost:5000/collections/${collectionId}/flashcards/${FlashcardId}`)
+      .then()
+  }
 
 
   render(){
@@ -65,6 +77,7 @@ lastCollection(){
             <Title/>
             <Collection collectionNumber={this.state.collectionNumber} collections= {this.state.collections} nextCollection={()=>this.nextCollection()} lastCollection={()=>this.lastCollection()}/>
             <NewCardForm addNewFlashcard={this.addNewFlashcard} collections={this.state.collections} collectionNumber={this.state.collectionNumber}/>
+            <NewCollectionForm addNewCollection = {this.addNewCollection}/>
         </div>
       );
     }
