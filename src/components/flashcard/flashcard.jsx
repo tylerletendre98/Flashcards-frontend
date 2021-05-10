@@ -37,23 +37,33 @@ class Flashcard extends Component{
         }
 
     render(){
-        return(
-            <div className="container">
+        if (this.props.flashcard.length === 0){
+            return(
                 <div>
-                    <button onClick={()=>this.lastFlashcard()}>Last Flashcard</button>
+                    There are no flashcards in this array.
                 </div>
-                    <div>Flashcard {this.state.flashcardNumber + 1} of {this.props.flashcard.length}</div>
-                    <div onClick={()=>this.flipCard()} className="flashcard">
-                        {this.state.flip ? this.props.flashcard[this.state.flashcardNumber].answer: this.props.flashcard[this.state.flashcardNumber].question}
-                    </div>
+            )
+        }
+        else{
+
+            return(
+                <div className="container">
                     <div>
-                        <button>Delete Flashcard</button>
+                        <button onClick={()=>this.lastFlashcard()}>Last Flashcard</button>
                     </div>
-                <div>
-                    <button onClick={()=>this.nextFlashcard()}>Next Flashcard</button>
+                        <div>Flashcard {this.state.flashcardNumber + 1} of {this.props.flashcard.length}</div>
+                        <div onClick={()=>this.flipCard()} className="flashcard">
+                            {this.state.flip ? this.props.flashcard[this.state.flashcardNumber].answer: this.props.flashcard[this.state.flashcardNumber].question}
+                        </div>
+                        <div>
+                            <button>Delete Flashcard</button>
+                        </div>
+                    <div>
+                        <button onClick={()=>this.nextFlashcard()}>Next Flashcard</button>
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        }
 
     }
 }

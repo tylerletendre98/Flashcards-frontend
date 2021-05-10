@@ -33,7 +33,7 @@ addNewFlashcard = (collectionId, newFlashcard)=> {
 
 
 addNewCollection = (newCollection) =>{
-  axios.post(`http://localhost:5000/api/collection` ,newCollection)
+  axios.post(`http://localhost:5000/api/collections/collection` ,newCollection)
   .then(res=>{
     this.setState({
       collections: res.data
