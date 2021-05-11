@@ -3,7 +3,6 @@ import Flashcard from '../flashcard/flashcard';
 import './collection.css';
 
 const Collection = (props) =>{
-
     const collectionTotal = props.collections[props.collectionNumber].flashcards.length
     return(
         <div className="collections">

@@ -14,7 +14,8 @@ class App extends Component{
     dataReady: false,
     flashcardNumber: 0
   }
-  
+
+  //calls and displays all information from database
   componentDidMount(){
     axios.get('http://localhost:5000/api/collections/collections')
       .then(res => this.setState({
@@ -32,7 +33,6 @@ addNewFlashcard = (collectionId, newFlashcard)=> {
     })
   }
 
-
 addNewCollection = (newCollection) =>{
   axios.post(`http://localhost:5000/api/collections/collection` ,newCollection)
   .then(res=>{
@@ -43,6 +43,7 @@ addNewCollection = (newCollection) =>{
 }
 
 
+//goes to next collection
 nextCollection(){
   let tempCollectionNumber = this.state.collectionNumber;
         tempCollectionNumber++;
@@ -55,6 +56,7 @@ nextCollection(){
         });
 }
 
+//goes to last collection
 lastCollection(){
   let tempCollectionNumber = this.state.collectionNumber;
         tempCollectionNumber--;
@@ -66,7 +68,7 @@ lastCollection(){
             flashcardNumber : 0
         });
   }
-
+//Goes to next card
   nextFlashcard(){
       let tempFlashcardNumber = this.state.flashcardNumber;
             tempFlashcardNumber++;
@@ -77,7 +79,7 @@ lastCollection(){
                   flashcardNumber: tempFlashcardNumber,
             });
     }
-
+    //goes to last card
   lastFlashcard(){
     let tempFlashcardNumber = this.state.flashcardNumber;
           tempFlashcardNumber--;
@@ -88,7 +90,7 @@ lastCollection(){
               flashcardNumber: tempFlashcardNumber
           });
     }
-
+  //deletes a card gets called in flashcard.jsx
   deleteCard= (collectionId, flashcardId)=>{
     console.log(collectionId, flashcardId);
       axios.delete(`http://localhost:5000/api/collections/${collectionId}/flashcards/${flashcardId}`)
@@ -114,6 +116,7 @@ lastCollection(){
         </div>
       );
     }
+    //displays if there is no information to be rendered
     else{
       return (<div></div>)
     }

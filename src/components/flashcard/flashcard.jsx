@@ -24,6 +24,7 @@ class Flashcard extends Component{
     }
 
     render(){
+        //displays if there is no flashcards in the flashcards array
         if (this.props.flashcard.length === 0){
             return(
                 <div>
@@ -31,6 +32,7 @@ class Flashcard extends Component{
                 </div>
             )
         }
+        //displays if there are flashcards
         else{
             return(
                 <div className="container">
