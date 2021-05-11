@@ -40,6 +40,9 @@ class Flashcard extends Component{
             let collectionId = this.props.collection._id;
             let flashcardId = this.props.flashcard[this.state.flashcardNumber]._id;
             this.props.deleteCard(collectionId, flashcardId);
+            this.setState({
+                flashcardNumber: this.props.flashcardNumber-1
+            })
         }
 
     render(){
@@ -55,17 +58,17 @@ class Flashcard extends Component{
             return(
                 <div className="container">
                     <div>
-                        <button onClick={()=>this.lastFlashcard()}>Last Flashcard</button>
+                        <button onClick={()=>this.props.lastFlashcard()}>Last Flashcard</button>
                     </div>
-                        <div>Flashcard {this.state.flashcardNumber + 1} of {this.props.flashcard.length}</div>
-                        <div onClick={()=>this.flipCard()} className="flashcard">
-                            {this.state.flip ? this.props.flashcard[this.state.flashcardNumber].answer: this.props.flashcard[this.state.flashcardNumber].question}
+                        <div>Flashcard {this.props.flashcardNumber+1} of {this.props.flashcard.length}</div>
+                        <div onClick={()=>this.props.flipCard()} className="flashcard">
+                            {this.state.flip ? this.props.flashcard[this.props.flashcardNumber].answer: this.props.flashcard[this.props.flashcardNumber].question}
                         </div>
                         <div>
                             <button onClick={()=> this.handleDelete()}>Delete Flashcard</button>
                         </div>
                     <div>
-                        <button onClick={()=>this.nextFlashcard()}>Next Flashcard</button>
+                        <button onClick={()=>this.props.nextFlashcard()}>Next Flashcard</button>
                     </div>
                 </div>
             )

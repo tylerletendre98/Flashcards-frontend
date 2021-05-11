@@ -12,6 +12,7 @@ class App extends Component{
     collections: [],
     collectionNumber:0,
     dataReady: false,
+    flashcardNumber: 0
   }
   
   componentDidMount(){
@@ -49,7 +50,8 @@ nextCollection(){
             tempCollectionNumber=0;
         }
         this.setState({
-            collectionNumber: tempCollectionNumber
+            collectionNumber: tempCollectionNumber,
+            flashcardNumber : 0
         });
 }
 
@@ -60,9 +62,32 @@ lastCollection(){
             tempCollectionNumber = this.state.collections.length - 1
         }
         this.setState({
-            collectionNumber: tempCollectionNumber
+            collectionNumber: tempCollectionNumber,
+            flashcardNumber : 0
         });
   }
+
+  nextFlashcard(){
+      let tempFlashcardNumber = this.state.flashcardNumber;
+            tempFlashcardNumber++;
+            if(tempFlashcardNumber === this.state.collections[this.state.collectionNumber].flashcards.length){
+                tempFlashcardNumber=0;
+            }
+            this.setState({
+                  flashcardNumber: tempFlashcardNumber,
+            });
+    }
+
+  lastFlashcard(){
+    let tempFlashcardNumber = this.state.flashcardNumber;
+          tempFlashcardNumber--;
+          if(tempFlashcardNumber < 0){
+              tempFlashcardNumber = this.state.collections[this.state.collectionNumber].flashcards.length - 1
+          }
+          this.setState({
+              flashcardNumber: tempFlashcardNumber
+          });
+    }
 
   deleteCard= (collectionId, flashcardId)=>{
     console.log(collectionId, flashcardId);
@@ -82,6 +107,7 @@ lastCollection(){
             <Title/>
             <Collection collectionNumber={this.state.collectionNumber} collections= {this.state.collections} 
             nextCollection={()=>this.nextCollection()} lastCollection={()=>this.lastCollection()} deleteCard= {this.deleteCard}
+            lastFlashcard = {()=>this.lastFlashcard()} flipCard= {this.flipCard} nextFlashcard = {()=>this.nextFlashcard()} flashcardNumber = {this.state.flashcardNumber} 
             />
             <NewCardForm addNewFlashcard={this.addNewFlashcard} collections={this.state.collections} collectionNumber={this.state.collectionNumber}/>
             <NewCollectionForm addNewCollection = {this.addNewCollection}/>
