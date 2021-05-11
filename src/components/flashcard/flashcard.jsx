@@ -32,7 +32,6 @@ class Flashcard extends Component{
             )
         }
         else{
-
             return(
                 <div className="container">
                     <div className="flashcards">
@@ -53,7 +52,6 @@ class Flashcard extends Component{
                 </div>
             )
         }
-
     }
 }
 
