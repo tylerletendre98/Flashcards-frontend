@@ -27,13 +27,18 @@ class NewCollectionForm extends Component{
 
     render() {
         return (
-             <div className="collection-form">
-                 <form onSubmit={this.handleSubmit}>
-                     <label>Enter the name of your new collection</label>
-                     <input type="text" name="title" id="" value={this.state.title} onChange={this.handleChange} />
-                     <input type="submit" value="Submit" />
-                 </form>
-             </div>
+            <div className="new-collection">
+                <div className="new-collection-title">
+                 <h3>Add a new collection below</h3> 
+                </div>
+                <div className="new-collection-form">
+                    <form onSubmit={this.handleSubmit}>
+                        <label>Enter the name of your new collection</label>
+                        <input type="text" name="title" id="" value={this.state.title} onChange={this.handleChange} />
+                        <input type="submit" value="Submit" />
+                    </form>
+                </div>
+            </div>
         );
     }
 }

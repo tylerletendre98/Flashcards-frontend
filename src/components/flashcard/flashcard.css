@@ -3,3 +3,17 @@
     justify-content: center;
 }
 
+.flashcards{
+    border-radius: 5px;
+    border-width: 3px;
+    border-style: solid;
+    border-color: black;
+    margin-bottom: 10px;
+    background-color: white;
+}
+.flashcard{
+    border-color: grey;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 5px;
+}

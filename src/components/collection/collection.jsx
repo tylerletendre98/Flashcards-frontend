@@ -6,11 +6,11 @@ const Collection = (props) =>{
 
     const collectionTotal = props.collections[props.collectionNumber].flashcards.length
     return(
-        <div>
-            <div>
-                <h3>{props.collections[props.collectionNumber].title}</h3>
+        <div className="collections">
+            <div className= "collection-title">
+                <h2>{props.collections[props.collectionNumber].title}</h2>
             </div>
-            <div><h4>Click on the card to see answer</h4></div>
+            <div><h5>Click on the card to see answer</h5></div>
             <div>
                 There are {collectionTotal} flashcards in this collection.
             </div>
