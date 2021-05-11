@@ -6,23 +6,12 @@ class Flashcard extends Component{
         super(props);
         this.state={
             flip: false,
-            flashcardNumber: 0
         }
     }
 
     flipCard(){
         this.setState({flip: !this.state.flip})
     }
-
-    handleDelete(){
-        let collectionId = this.props.collection._id;
-        let flashcardId = this.props.flashcard[this.state.flashcardNumber]._id;
-        this.props.deleteCard(collectionId, flashcardId);
-        this.setState({
-            flashcardNumber: this.props.flashcardNumber-1
-        })
-    }
-
     render(){
         //displays if there is no flashcards in the flashcards array
         if (this.props.flashcard.length === 0){
@@ -45,7 +34,7 @@ class Flashcard extends Component{
                                 {this.state.flip ? this.props.flashcard[this.props.flashcardNumber].answer: this.props.flashcard[this.props.flashcardNumber].question}
                             </div>
                             <div>
-                                <button onClick={()=> this.handleDelete()}>Delete Flashcard</button>
+                                <button onClick={()=> this.props.handleDelete()}>Delete Flashcard</button>
                             </div>
                         <div>
                             <button onClick={()=>this.props.nextFlashcard()}>Next Flashcard</button>

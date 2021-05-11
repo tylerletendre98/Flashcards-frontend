@@ -101,6 +101,15 @@ lastCollection(){
       })
   }
 
+  //deletes card from a collection
+  handleDelete(){
+    let collectionId = this.state.collections[this.state.collectionNumber]._id;
+    let flashcardId = this.state.collections[this.state.collectionNumber].flashcards[this.state.flashcardNumber]._id;
+    this.deleteCard(collectionId, flashcardId);
+    this.setState({
+        flashcardNumber: this.state.flashcardNumber-1
+    })
+}
 
   render(){
     if(this.state.dataReady){
@@ -110,7 +119,7 @@ lastCollection(){
             <Collection collectionNumber={this.state.collectionNumber} collections= {this.state.collections} 
             nextCollection={()=>this.nextCollection()} lastCollection={()=>this.lastCollection()} deleteCard= {this.deleteCard}
             lastFlashcard = {()=>this.lastFlashcard()} flipCard= {this.flipCard} nextFlashcard = {()=>this.nextFlashcard()} flashcardNumber = {this.state.flashcardNumber} 
-            />
+            handleDelete={()=>this.handleDelete()}/>
             <NewCardForm addNewFlashcard={this.addNewFlashcard} collections={this.state.collections} collectionNumber={this.state.collectionNumber}/>
             <NewCollectionForm addNewCollection = {this.addNewCollection}/>
         </div>

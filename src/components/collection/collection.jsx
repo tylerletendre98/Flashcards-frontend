@@ -18,7 +18,8 @@ const Collection = (props) =>{
                         <button onClick={()=> props.lastCollection()}>Previous Collection</button>
                 </div>
                 <div className="col-md-4">
-                    <Flashcard flashcard = {props.collections[props.collectionNumber].flashcards} collection ={props.collections[props.collectionNumber]} deleteCard={props.deleteCard} flashcardNumber={props.flashcardNumber} nextFlashcard = {props.nextFlashcard} lastFlashcard ={props.lastFlashcard}/>
+                    <Flashcard flashcard = {props.collections[props.collectionNumber].flashcards} collection ={props.collections[props.collectionNumber]} deleteCard={props.deleteCard}
+                     flashcardNumber={props.flashcardNumber} nextFlashcard = {props.nextFlashcard} lastFlashcard ={props.lastFlashcard} handleDelete= {props.handleDelete}/>
                 </div>
                     <div className="col-md-4">
                     <button onClick={()=> props.nextCollection()}>Next Collection</button>
