@@ -37,10 +37,11 @@ class Flashcard extends Component{
         }
 
         handleDelete(){
-            let collectionId = this.props.collection._id
-            let flashcardId = this.props.flashcard[this.state.flashcardNumber]._id
+            let collectionId = this.props.collection._id;
+            let flashcardId = this.props.flashcard[this.state.flashcardNumber]._id;
             this.props.deleteCard(collectionId, flashcardId);
         }
+
     render(){
         if (this.props.flashcard.length === 0){
             return(

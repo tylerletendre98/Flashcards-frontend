@@ -64,8 +64,9 @@ lastCollection(){
         });
   }
 
-  deleteCard= (collectionId, FlashcardId)=>{
-      axios.delete(`http://localhost:5000/collections/${collectionId}/flashcards/${FlashcardId}`)
+  deleteCard= (collectionId, flashcardId)=>{
+    console.log(collectionId, flashcardId);
+      axios.delete(`http://localhost:5000/api/collections/${collectionId}/flashcards/${flashcardId}`)
       .then(res=>{
         this.setState({
           collections : res.data
@@ -80,7 +81,7 @@ lastCollection(){
         <div className="App">
             <Title/>
             <Collection collectionNumber={this.state.collectionNumber} collections= {this.state.collections} 
-            nextCollection={()=>this.nextCollection()} lastCollection={()=>this.lastCollection()} deleteCard = {this.deleteCard}
+            nextCollection={()=>this.nextCollection()} lastCollection={()=>this.lastCollection()} deleteCard= {this.deleteCard}
             />
             <NewCardForm addNewFlashcard={this.addNewFlashcard} collections={this.state.collections} collectionNumber={this.state.collectionNumber}/>
             <NewCollectionForm addNewCollection = {this.addNewCollection}/>
